@@ -10,6 +10,7 @@ from .serializers import (
 )
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
@@ -57,7 +58,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
         context = super().get_serializer_context()
         context['request'] = self.request
         return context
-
+    
     @action(detail=False, methods=['get'])
     def summary(self, request):
         time_period = request.query_params.get('period', 'month')
